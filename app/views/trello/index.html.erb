@@ -1,0 +1,8 @@
+<h1>Home</h1>
+
+<ul>
+  <% @teams.each do |team| %>
+    <li><%= team.name %></li> <!-- Asumiendo que los equipos tienen un atributo 'name' -->
+    <%= link_to 'View', team, class: 'card-link btn btn-primary' %>
+  <% end %>
+</ul>

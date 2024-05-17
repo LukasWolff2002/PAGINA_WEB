@@ -1,0 +1,20 @@
+<h1>Aqui se ve la info de un team</h1>
+
+<h1><%= @team.name %></h1>
+
+<h2>Boards:</h2>
+<ul>
+  <% @boards.each do |board| %>
+    <li><%= board.name %></li> <!-- Asumiendo que cada board tiene un atributo 'name' -->
+    <%= link_to 'View', board, class: 'card-link btn btn-primary' %>
+  <% end %>
+</ul> 
+
+<h1>Aqui se muetran todos los user del work team</h1>
+
+<ul>
+  <% @users.each do |user| %>
+    <li><%= user.first_name %></li> <!-- Asumiendo que cada board tiene un atributo 'name' -->
+    <%= link_to 'View', user, class: 'card-link btn btn-primary' %>
+  <% end %>
+</ul>

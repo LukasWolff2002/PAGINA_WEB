@@ -1,0 +1,45 @@
+<h1>Aqui se muestra la info de un board</h1>
+
+<h2>Tasks:</h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <h3>TO DO</h3>
+      <ul class="list-group">
+        <% @tasks.select { |task| task.status == 'TO DO' }.each do |task| %>
+          <li class="list-group-item">
+            <%= task.title %>
+            <%= link_to 'View', task, class: 'card-link btn btn-primary' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <h3>WIP</h3>
+      <ul class="list-group">
+        <% @tasks.select { |task| task.status == 'WIP' }.each do |task| %>
+          <li class="list-group-item">
+            <%= task.title %>
+            <%= link_to 'View', task, class: 'card-link btn btn-primary' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <h3>DONE</h3>
+      <ul class="list-group">
+        <% @tasks.select { |task| task.status == 'DONE' }.each do |task| %>
+          <li class="list-group-item">
+            <%= task.title %>
+            <%= link_to 'View', task, class: 'card-link btn btn-primary' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'New Task', new_board_task_path(@board), class: 'card-link btn btn-primary' %>
+
+

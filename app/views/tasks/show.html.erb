@@ -1,0 +1,48 @@
+<h1>Task Details</h1>
+
+<p>
+  <strong>Title:</strong>
+  <%= @task.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @task.description %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @task.status %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @task.priority %>
+</p>
+
+<p>
+  <strong>Creator:</strong>
+  <%= @task.creator.first_name %> <%= @task.creator.last_name %>
+</p>
+
+<p>
+  <strong>Assignee:</strong>
+  <%= @task.assignee.first_name %> <%= @task.assignee.last_name %>
+</p>
+
+<p>
+  <strong>Board:</strong>
+  <%= @task.board.name %>
+</p>
+
+<p>
+  <strong>Created At:</strong>
+  <%= @task.created_at.strftime("%B %d, %Y %H:%M") %>
+</p>
+
+<p>
+  <strong>Updated At:</strong>
+  <%= @task.updated_at.strftime("%B %d, %Y %H:%M") %>
+</p>
+
+<%= link_to 'Back to Board', board_path(@task.board), class: 'btn btn-secondary' %>
