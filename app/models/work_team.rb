@@ -5,4 +5,6 @@ class WorkTeam < ActiveRecord::Base
     has_many :boards
   
     validates :name, presence: true
+
+    accepts_nested_attributes_for :users
   end

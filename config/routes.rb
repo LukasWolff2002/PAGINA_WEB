@@ -12,11 +12,13 @@ Rails.application.routes.draw do
   root "trello#index"
 
   resources :trello
-  resources :work_team
-  resources :board do
+  resources :work_teams do
+    resources :boards
+  end
+  resources :boards do
     resources :tasks
   end
-  resources :user
+  resources :users
   resources :tasks
 
 end
