@@ -62,3 +62,5 @@
     <%= form.submit 'Move to DONE', class: 'btn btn-success' %>
   <% end %>
 <% end %>
+
+<%= link_to "Delete Task", @task, data: { turbo_confirm: 'Are you sure?', turbo_method: "delete" }, class: "btn btn-danger" %>

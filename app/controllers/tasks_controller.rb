@@ -29,6 +29,17 @@ class TasksController < ApplicationController
         redirect_to @task, alert: 'Failed to update task status.'
       end
     end
+
+    def destroy
+      @task = Task.find(params[:id])
+      board = @task.board  # Guarda la referencia del tablero antes de destruir la tarea
+      @task.destroy
+    
+      respond_to do |format|
+        format.html { redirect_to board_path(board), notice: "Task was successfully destroyed." }
+        format.json { head :no_content }
+      end
+    end
   
     private
   
