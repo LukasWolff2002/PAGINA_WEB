@@ -1,0 +1,14 @@
+<h1>Add Users to <%= @work_team.name %></h1>
+
+<%= form_with(model: @work_team, url: update_users_work_team_path(@work_team), method: :patch, local: true) do |form| %>
+  <div class="form-group mb-3">
+    <%= form.label :user_emails, "User Emails (separate with commas)" %>
+    <%= form.text_area :user_emails, class: "form-control", rows: 3, placeholder: "user1@example.com, user2@example.com" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Add Users', class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', work_team_path(@work_team), class: 'btn btn-secondary' %>

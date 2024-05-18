@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   resources :trello
   resources :work_teams do
     resources :boards
+    member do
+      get 'add_users'
+      patch 'update_users'
+    end
   end
   resources :boards do
     resources :tasks

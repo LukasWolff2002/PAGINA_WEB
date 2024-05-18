@@ -24,6 +24,16 @@ class WorkTeamsController < ApplicationController
         end
     end
 
+    def add_users
+        @work_team = WorkTeam.find(params[:id])
+    end
+    
+    def update_users
+        @work_team = WorkTeam.find(params[:id])
+        add_users_to_work_team
+        redirect_to @work_team, notice: 'Users were successfully added to the team.'
+    end
+
     private
 
     def work_team_params
