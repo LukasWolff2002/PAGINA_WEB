@@ -20,6 +20,15 @@ class TasksController < ApplicationController
         render :new
       end
     end
+
+    def move
+      @task = Task.find(params[:id])
+      if @task.update(status: params[:status])
+        redirect_to @task, notice: 'Task status was successfully updated.'
+      else
+        redirect_to @task, alert: 'Failed to update task status.'
+      end
+    end
   
     private
   

@@ -46,3 +46,19 @@
 </p>
 
 <%= link_to 'Back to Board', board_path(@task.board), class: 'btn btn-secondary' %>
+
+<% if @task.status != 'TO DO' %>
+  <%= form_with url: move_board_task_path(@task.board, @task, status: 'TO DO'), method: :patch do |form| %>
+    <%= form.submit 'Move to TO DO', class: 'btn btn-primary' %>
+  <% end %>
+<% end %>
+<% if @task.status != 'WIP' %>
+  <%= form_with url: move_board_task_path(@task.board, @task, status: 'WIP'), method: :patch do |form| %>
+    <%= form.submit 'Move to WIP', class: 'btn btn-warning' %>
+  <% end %>
+<% end %>
+<% if @task.status != 'DONE' %>
+  <%= form_with url: move_board_task_path(@task.board, @task, status: 'DONE'), method: :patch do |form| %>
+    <%= form.submit 'Move to DONE', class: 'btn btn-success' %>
+  <% end %>
+<% end %>

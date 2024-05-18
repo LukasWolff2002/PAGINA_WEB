@@ -20,7 +20,14 @@ Rails.application.routes.draw do
     end
   end
   resources :boards do
-    resources :tasks
+    #member do
+   #   patch 'move'
+    #end
+    resources :tasks do 
+      member do
+        patch 'move'
+      end
+    end
   end
   resources :users
   resources :tasks
