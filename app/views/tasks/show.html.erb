@@ -1,66 +1,24 @@
-<h1>Task Details</h1>
-
-<p>
-  <strong>Title:</strong>
-  <%= @task.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @task.description %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @task.status %>
-</p>
-
-<p>
-  <strong>Priority:</strong>
-  <%= @task.priority %>
-</p>
-
-<p>
-  <strong>Creator:</strong>
-  <%= @task.creator.first_name %> <%= @task.creator.last_name %>
-</p>
-
-<p>
-  <strong>Assignee:</strong>
-  <%= @task.assignee.first_name %> <%= @task.assignee.last_name %>
-</p>
-
-<p>
-  <strong>Board:</strong>
-  <%= @task.board.name %>
-</p>
-
-<p>
-  <strong>Created At:</strong>
-  <%= @task.created_at.strftime("%B %d, %Y %H:%M") %>
-</p>
-
-<p>
-  <strong>Updated At:</strong>
-  <%= @task.updated_at.strftime("%B %d, %Y %H:%M") %>
-</p>
-
-<%= link_to 'Back to Board', board_path(@task.board), class: 'btn btn-secondary' %>
-
-<% if @task.status != 'TO DO' %>
-  <%= form_with url: move_board_task_path(@task.board, @task, status: 'TO DO'), method: :patch do |form| %>
-    <%= form.submit 'Move to TO DO', class: 'btn btn-primary' %>
-  <% end %>
-<% end %>
-<% if @task.status != 'WIP' %>
-  <%= form_with url: move_board_task_path(@task.board, @task, status: 'WIP'), method: :patch do |form| %>
-    <%= form.submit 'Move to WIP', class: 'btn btn-warning' %>
-  <% end %>
-<% end %>
-<% if @task.status != 'DONE' %>
-  <%= form_with url: move_board_task_path(@task.board, @task, status: 'DONE'), method: :patch do |form| %>
-    <%= form.submit 'Move to DONE', class: 'btn btn-success' %>
-  <% end %>
-<% end %>
-
-<%= link_to "Delete Task", @task, data: { turbo_confirm: 'Are you sure?', turbo_method: "delete" }, class: "btn btn-danger" %>
+<div class="container mt-4">
+  <h1 class="text-center">Detalles de la Tarea</h1>
+  <div class="card mt-4">
+    <div class="card-body">
+      <h2><%= @task.title %></h2>
+      <p><strong>Descripción:</strong> <%= @task.description %></p>
+      <p><strong>Estado:</strong> <%= @task.status %></p>
+      <p><strong>Prioridad:</strong> <%= @task.priority %></p>
+      <p><strong>Creador:</strong> <%= @task.creator.first_name %> <%= @task.creator.last_name %></p>
+      <p><strong>Responsable:</strong> <%= @task.assignee.first_name %> <%= @task.assignee.last_name %></p>
+      <p><strong>Tablero:</strong> <%= link_to @task.board.name, board_path(@task.board) %></p>
+      <p><strong>Creado:</strong> <%= @task.created_at.strftime("%d de %B, %Y %H:%M") %></p>
+      <p><strong>Actualizado:</strong> <%= @task.updated_at.strftime("%d de %B, %Y %H:%M") %></p>
+      
+      <% ['TO DO', 'WIP', 'DONE'].each do |status| %>
+        <% unless @task.status == status %>
+          <%= form_with url: move_board_task_path(@task.board, @task, status: status), method: :patch, class: 'd-inline' do |form| %>
+            <%= form.submit "Mover a #{status}", class: "btn btn-outline-primary" %>
+          <% end %> <!-- Closing form_with -->
+        <% end %> <!-- Closing unless -->
+      <% end %> <!-- Closing each -->
+    </div>
+  </div>
+</div>

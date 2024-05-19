@@ -1,4 +1,13 @@
-<h1>Bienvenido a Trello</h1>
-
-<%= link_to 'Ver Todos los Teams', work_teams_path, class: 'card-link btn btn-primary' %>
-<%= link_to 'Ver Todos los Users', users_path, class: 'card-link btn btn-primary' %>
+<div class="container mt-5">
+  <h1 class="text-center">Bienvenido a Trello</h1>
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6 text-center">
+      <div class="mb-3">
+        <%= link_to 'Ver Todos los Teams', work_teams_path, class: 'btn btn-lg btn-primary' %>
+      </div>
+      <div class="mb-3">
+        <%= link_to 'Ver Todos los Users', users_path, class: 'btn btn-lg btn-primary' %>
+      </div>
+    </div>
+  </div>
+</div>

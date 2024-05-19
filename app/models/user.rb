@@ -10,4 +10,7 @@ class User < ActiveRecord::Base
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "debe ser un correo electrónico válido" }
   validates :password, length: { minimum: 6, message: "debe tener al menos 6 caracteres" }
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

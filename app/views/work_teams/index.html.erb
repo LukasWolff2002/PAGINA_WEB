@@ -1,27 +1,28 @@
-<h1>Aqui se muestran todos los work teams</h1>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @teams.each do |work_team| %>
-      <tr>
-        <td><%= work_team.name %></td>
-        <td><%= work_team.description %></td>
-        <td>
-          <%= link_to 'Show', work_team_path(work_team), class: 'btn btn-primary btn-sm' %>
-          <%= link_to 'Edit', edit_work_team_path(work_team), class: 'btn btn-secondary btn-sm' %>
-          <%= link_to 'Delete', work_team_path(work_team), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
-<%= link_to 'New Work Team', new_work_team_path, class: 'btn btn-success' %>
+<div class="container mt-4">
+  <h1 class="text-center mb-4">Aqui se muestran todos los work teams</h1>
+  
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @teams.each do |work_team| %>
+          <tr>
+            <td><%= work_team.name %></td>
+            <td><%= work_team.description %></td>
+            <td>
+              <%= link_to 'Show', work_team_path(work_team), class: 'btn btn-primary' %>
+              <%= link_to 'Edit', edit_work_team_path(work_team), class: 'btn btn-secondary' %>
+              <%= link_to 'Delete', work_team_path(work_team), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= link_to 'New', new_work_team_path, class: 'btn btn-success btn-sm' %>
+  </div>

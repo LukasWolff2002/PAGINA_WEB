@@ -1,24 +1,31 @@
-<h1>Aqui se ve la info de un team</h1>
 
-<h1><%= @team.name %></h1>
+<div class="container mt-4">
+  <h1 class="text-center">Info de <%= @team.name %></h1>
 
-<h2>Boards:</h2>
-<ul>
-  <% @boards.each do |board| %>
-    <li><%= board.name %></li> <!-- Asumiendo que cada board tiene un atributo 'name' -->
-    <%= link_to 'View', board, class: 'card-link btn btn-primary' %>
-  <% end %>
-</ul> 
+  <section class="mt-5">
+    <h2>Boards:</h2>
+    <div class="list-group">
+      <% @boards.each do |board| %>
+        <div class="list-group-item d-flex justify-content-between align-items-center">
+          <%= board.name %>
+          <%= link_to 'View', board_path(board), class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+    <%= link_to 'Add Board', new_work_team_board_path(@team), class: 'btn btn-success mt-3' %>
+  </section>
 
-<%= link_to 'Add Board', new_work_team_board_path(@team), class: 'card-link btn btn-primary' %>
+  <section class="mt-5">
+    <h2>Users:</h2>
+    <ul class="list-group">
+      <% @users.each do |user| %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <%= "#{user.first_name} #{user.last_name}" %>
+          <%= link_to 'View', user_path(user), class: 'btn btn-primary' %>
+        </li>
+      <% end %>
+    </ul>
+    <%= link_to 'Add User', add_users_work_team_path(@team), class: 'btn btn-success mt-3' %>
+  </section>
 
-<h1>Aqui se muetran todos los user del work team</h1>
-
-<ul>
-  <% @users.each do |user| %>
-    <li><%= user.first_name %></li> <!-- Asumiendo que cada board tiene un atributo 'name' -->
-    <%= link_to 'View', user, class: 'card-link btn btn-primary' %>
-  <% end %>
-</ul>
-
-<%= link_to 'Add user', add_users_work_team_path(@team), class: 'card-link btn btn-primary' %>
+</div>
